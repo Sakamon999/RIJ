@@ -17,7 +17,7 @@ import RIJPage from './pages/RIJPage';
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [currentPage, setCurrentPage] = useState<'home' | 'toji' | 'zen' | 'shinrinyoku' | 'shokuyojo' | 'matsuri' | 'rij'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'toji' | 'zen' | 'shinrinyoku' | 'shokuyojo' | 'matsuri' | 'rij' | 'rij-consent'>('home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,7 +48,11 @@ function App() {
   }
 
   if (currentPage === 'rij') {
-    return <RIJPage onBack={() => setCurrentPage('home')} />;
+    return <RIJPage onBack={() => setCurrentPage('home')} onStartProfiling={() => setCurrentPage('rij-consent')} />;
+  }
+
+  if (currentPage === 'rij-consent') {
+    return <RIJPage onBack={() => setCurrentPage('rij')} onStartProfiling={() => setCurrentPage('rij-consent')} isConsentPage />;
   }
 
   return (
