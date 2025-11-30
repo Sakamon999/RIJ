@@ -18,15 +18,15 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen, scrolled }: Navi
       alt: 'Japanese zen garden with morning mist'
     },
     {
-      src: '/u1263267256_Create_a_photo_for_a_Japanese_tea_ceremony_in_sil_5272e9e5-7638-40ba-bd96-31dcfd24c828_2.png',
+      src: 'https://stackblitz.com/storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6NDk4OTI1MzYsInB1ciI6ImJsb2JfaWQifX0=--8f3c45b95fd737eab38ea2b0f45ca74a0a3ea21b/-u1263267256_Create_a_photo_for_a_Japanese_tea_ceremony_in_sil_5272e9e5-7638-40ba-bd96-31dcfd24c828_2.png',
       alt: 'Japanese tea ceremony'
     },
     {
-      src: '/u1263267256_Try_to_make_a_real_Japanese_Ikebana_classic_style_9fcecb21-e7de-4108-a79c-65bbcb8d662a_2.png',
+      src: 'https://stackblitz.com/storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6NDk4OTI1MzUsInB1ciI6ImJsb2JfaWQifX0=--0e005c2c4b4b08b052e86deee2715bd2d4607bdf/-u1263267256_Try_to_make_a_real_Japanese_Ikebana_classic_style_9fcecb21-e7de-4108-a79c-65bbcb8d662a_2.png',
       alt: 'Japanese Ikebana flower arrangement'
     },
     {
-      src: '/u1263267256_Create_a_photo_for_Onsen_in_wither_snow_--ar_169__30008b5b-62ff-4c73-b422-0badd57f94bb_0.png',
+      src: 'https://stackblitz.com/storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6NDk4OTI1MzQsInB1ciI6ImJsb2JfaWQifX0=--0f2228d07ca180e391389cb96c510a72bae15fb5/-u1263267256_Create_a_photo_for_Onsen_in_wither_snow_--ar_169__30008b5b-62ff-4c73-b422-0badd57f94bb_0.png',
       alt: 'Onsen in winter snow'
     }
   ];
