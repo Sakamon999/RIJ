@@ -15,7 +15,7 @@ export default function MatsuriPage({ onBack }: MatsuriPageProps) {
       <div className="relative min-h-screen">
         <div className="absolute inset-0">
           <img
-            src="https://images.pexels.com/photos/3692056/pexels-photo-3692056.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            src="/Festival_Japan.png"
             alt="Japanese Matsuri Festival"
             className="w-full h-full object-cover opacity-40"
           />
@@ -210,7 +210,7 @@ export default function MatsuriPage({ onBack }: MatsuriPageProps) {
                 </div>
                 <div className="md:col-span-2 order-1 md:order-2">
                   <img
-                    src="https://images.pexels.com/photos/3692058/pexels-photo-3692058.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    src="/Matsuri1_Mikoshi.jpg"
                     alt="Festival Participation"
                     className="w-full h-72 object-cover rounded-sm shadow-2xl"
                   />
@@ -220,7 +220,7 @@ export default function MatsuriPage({ onBack }: MatsuriPageProps) {
               <div className="grid md:grid-cols-5 gap-8 items-start">
                 <div className="md:col-span-2">
                   <img
-                    src="https://images.pexels.com/photos/208315/pexels-photo-208315.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    src="/Matsuri1_Omairi.jpg"
                     alt="Festival Preparation"
                     className="w-full h-72 object-cover rounded-sm shadow-2xl"
                   />

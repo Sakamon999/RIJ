@@ -54,7 +54,7 @@ export default function ShokuyojoPage({ onBack }: ShokuyojoPageProps) {
       <div className="pt-24">
         <section className="relative h-[75vh] flex items-center justify-center overflow-hidden">
           <img
-            src="https://images.pexels.com/photos/1907228/pexels-photo-1907228.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            src="/u1263267256_Create_a_picture_for_a_Kyoto_Kaiseki_dishes_--ar__c7ca1901-f733-472b-a368-4cf939758789_2.png"
             alt="Shoku-yojo Food Experience"
             className="absolute inset-0 w-full h-full object-cover opacity-60"
           />
@@ -180,7 +180,7 @@ export default function ShokuyojoPage({ onBack }: ShokuyojoPageProps) {
               <div className="grid md:grid-cols-5 gap-8 items-start">
                 <div className="md:col-span-2">
                   <img
-                    src="https://images.pexels.com/photos/1580464/pexels-photo-1580464.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    src="/Shoku1_Shoku.png"
                     alt="Shojin Ryori Temple Cuisine"
                     className="w-full h-72 object-cover rounded-sm shadow-2xl"
                   />
@@ -270,7 +270,7 @@ export default function ShokuyojoPage({ onBack }: ShokuyojoPageProps) {
                 </div>
                 <div className="md:col-span-2 order-1 md:order-2">
                   <img
-                    src="https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    src="/Shoku2_Shoku.png"
                     alt="Fermentation Culture"
                     className="w-full h-72 object-cover rounded-sm shadow-2xl"
                   />

@@ -68,7 +68,7 @@ export default function Philosophy() {
 
           <div className={`relative h-[600px] transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
             <img
-              src="https://images.pexels.com/photos/161401/fushimi-inari-taisha-shrine-kyoto-japan-temple-161401.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              src="/u1263267256_Japanese_sand_garden_in_a_Kyoto_temple_--ar_169_-_20c62d9c-d5f5-42f1-a2fe-88de273f1fbc_2.png"
               alt="Japanese zen garden"
               className={`w-full h-full object-cover rounded-lg shadow-2xl transition-transform duration-1000 ${isVisible ? 'scale-100' : 'scale-95'}`}
             />

@@ -54,7 +54,7 @@ export default function ShinrinyokuPage({ onBack }: ShinrinyokuPageProps) {
       <div className="pt-24">
         <section className="relative h-[75vh] flex items-center justify-center overflow-hidden">
           <img
-            src="https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            src="/Gemini_Shinrinyoku.jpg"
             alt="Forest Bathing"
             className="absolute inset-0 w-full h-full object-cover opacity-70"
           />
@@ -217,7 +217,7 @@ export default function ShinrinyokuPage({ onBack }: ShinrinyokuPageProps) {
               <div className="grid md:grid-cols-5 gap-8 items-start">
                 <div className="md:col-span-2">
                   <img
-                    src="https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    src="/u1263267256_Create_a_picture_for_a_beautiful_Yakushima_big_tr_5484f132-0377-4073-b816-80bae98aa47b_3.png"
                     alt="Ancient Forest Walk"
                     className="w-full h-72 object-cover rounded-sm shadow-2xl"
                   />
@@ -301,7 +301,7 @@ export default function ShinrinyokuPage({ onBack }: ShinrinyokuPageProps) {
                 </div>
                 <div className="md:col-span-2 order-1 md:order-2">
                   <img
-                    src="https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    src="/u1263267256_Create_a_picture_for_a_beautiful_Yakushima_big_tr_5484f132-0377-4073-b816-80bae98aa47b_2.png"
                     alt="Certified Guide"
                     className="w-full h-72 object-cover rounded-sm shadow-2xl"
                   />

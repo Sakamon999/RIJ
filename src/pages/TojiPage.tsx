@@ -54,7 +54,7 @@ export default function TojiPage({ onBack }: TojiPageProps) {
       <div className="pt-24">
         <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
           <img
-            src="https://images.pexels.com/photos/3014019/pexels-photo-3014019.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            src="/u1263267256_Please_create_a_picture_for_a_beautiful_onsen_sce_dbcf9f0e-2fee-4395-9062-2fa54c34a125_2.png"
             alt="Toji Hot Spring"
             className="absolute inset-0 w-full h-full object-cover"
           />
@@ -172,7 +172,7 @@ export default function TojiPage({ onBack }: TojiPageProps) {
                 </div>
                 <div className="order-1 md:order-2">
                   <img
-                    src="https://images.pexels.com/photos/5137664/pexels-photo-5137664.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    src="/u1263267256_Please_create_a_picture_for_a_beautiful_onsen_sce_dbcf9f0e-2fee-4395-9062-2fa54c34a125_1.png"
                     alt="Authentic Onsen"
                     className="w-full h-80 object-cover rounded-lg shadow-2xl"
                   />
@@ -182,7 +182,7 @@ export default function TojiPage({ onBack }: TojiPageProps) {
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
                   <img
-                    src="https://images.pexels.com/photos/2563681/pexels-photo-2563681.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    src="/u1263267256_Please_create_a_picture_for_a_Hakone_onsen_with_a_d770d264-9bba-4f13-8af5-574ab956a055_1.png"
                     alt="Guided Bathing"
                     className="w-full h-80 object-cover rounded-lg shadow-2xl"
                   />

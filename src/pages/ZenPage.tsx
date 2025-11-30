@@ -54,7 +54,7 @@ export default function ZenPage({ onBack }: ZenPageProps) {
       <div className="pt-24">
         <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
           <img
-            src="https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            src="/Gemini_Generated_Image.jpg"
             alt="Zen Garden"
             className="absolute inset-0 w-full h-full object-cover opacity-60"
           />
@@ -196,7 +196,7 @@ export default function ZenPage({ onBack }: ZenPageProps) {
               <div className="grid md:grid-cols-5 gap-8 items-start">
                 <div className="md:col-span-2">
                   <img
-                    src="https://images.pexels.com/photos/3822621/pexels-photo-3822621.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    src="/Zazen_Zen.png"
                     alt="Zazen Meditation"
                     className="w-full h-72 object-cover rounded-sm shadow-2xl"
                   />
@@ -279,7 +279,7 @@ export default function ZenPage({ onBack }: ZenPageProps) {
                 </div>
                 <div className="md:col-span-2 order-1 md:order-2">
                   <img
-                    src="https://images.pexels.com/photos/4195325/pexels-photo-4195325.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    src="/Shakyou_Zen.png"
                     alt="Shakyo Sutra Copying"
                     className="w-full h-72 object-cover rounded-sm shadow-2xl"
                   />
@@ -289,7 +289,7 @@ export default function ZenPage({ onBack }: ZenPageProps) {
               <div className="grid md:grid-cols-5 gap-8 items-start">
                 <div className="md:col-span-2">
                   <img
-                    src="https://images.pexels.com/photos/2583852/pexels-photo-2583852.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    src="/Shukuhou_Zen.png"
                     alt="Shukubo Temple Stay"
                     className="w-full h-72 object-cover rounded-sm shadow-2xl"
                   />
