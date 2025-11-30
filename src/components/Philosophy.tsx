@@ -70,6 +70,13 @@ export default function Philosophy() {
             <img
               src="/u1263267256_Japanese_sand_garden_in_a_Kyoto_temple_--ar_169_-_20c62d9c-d5f5-42f1-a2fe-88de273f1fbc_2.png"
               alt="Japanese zen garden"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                const fallback = 'https://images.pexels.com/photos/3408354/pexels-photo-3408354.jpeg?auto=compress&cs=tinysrgb&w=1920';
+                if (target.src !== fallback) {
+                  target.src = fallback;
+                }
+              }}
               className={`w-full h-full object-cover rounded-lg shadow-2xl transition-transform duration-1000 ${isVisible ? 'scale-100' : 'scale-95'}`}
             />
             <div className={`absolute inset-0 bg-emerald-500/20 rounded-lg transition-opacity duration-1000 ${isVisible ? 'opacity-0' : 'opacity-100'}`} />
