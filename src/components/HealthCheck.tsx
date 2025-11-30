@@ -9,43 +9,37 @@ export default function HealthCheck() {
       icon: Activity,
       titleKey: 'healthcheck.comprehensive.title',
       descKey: 'healthcheck.comprehensive.desc',
-      image: '/u1263267256__--ar_169_--raw_--v_7_c3efb133-ff4c-4555-8979-a09787e67a8e_1.png',
-      fallback: 'https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=1920'
+      image: '/u1263267256__--ar_169_--raw_--v_7_c3efb133-ff4c-4555-8979-a09787e67a8e_1.png'
     },
     {
       icon: Brain,
       titleKey: 'healthcheck.brain.title',
       descKey: 'healthcheck.brain.desc',
-      image: '/u1263267256__--ar_169_--raw_--v_7_c3efb133-ff4c-4555-8979-a09787e67a8e_0.png',
-      fallback: 'https://images.pexels.com/photos/3825517/pexels-photo-3825517.jpeg?auto=compress&cs=tinysrgb&w=1920'
+      image: '/u1263267256__--ar_169_--raw_--v_7_c3efb133-ff4c-4555-8979-a09787e67a8e_0.png'
     },
     {
       icon: HeartPulse,
       titleKey: 'healthcheck.cardiac.title',
       descKey: 'healthcheck.cardiac.desc',
-      image: '/u1263267256_Create_a_picture_for_Comprehensive_heart_health_e_328512df-c6ad-4fbe-9462-b7591d6ca828_0.png',
-      fallback: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=1920'
+      image: '/u1263267256_Create_a_picture_for_Comprehensive_heart_health_e_328512df-c6ad-4fbe-9462-b7591d6ca828_0.png'
     },
     {
       icon: Microscope,
       titleKey: 'healthcheck.cancer.title',
       descKey: 'healthcheck.cancer.desc',
-      image: '/u1263267256_Create_a_picture_for_State-of-the-art_early_cance_9477d327-f6e4-4fb4-8d78-cd3181570800_0.png',
-      fallback: 'https://images.pexels.com/photos/2280547/pexels-photo-2280547.jpeg?auto=compress&cs=tinysrgb&w=1920'
+      image: '/u1263267256_Create_a_picture_for_State-of-the-art_early_cance_9477d327-f6e4-4fb4-8d78-cd3181570800_0.png'
     },
     {
       icon: Stethoscope,
       titleKey: 'healthcheck.preventive.title',
       descKey: 'healthcheck.preventive.desc',
-      image: '/u1263267256_Create_a_picture_for_Personalized_health_optimiza_d8e48277-97dd-4b10-b178-b7a19b7a9a94_1.png',
-      fallback: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=1920'
+      image: '/u1263267256_Create_a_picture_for_Personalized_health_optimiza_d8e48277-97dd-4b10-b178-b7a19b7a9a94_1.png'
     },
     {
       icon: Eye,
       titleKey: 'healthcheck.genomic.title',
       descKey: 'healthcheck.genomic.desc',
-      image: '/u1263267256_Create_a_picture_for_DNA_analysis_for_personalize_c1b00433-4809-4d4c-abc9-76dd817287ea_2 (1).png',
-      fallback: 'https://images.pexels.com/photos/3825527/pexels-photo-3825527.jpeg?auto=compress&cs=tinysrgb&w=1920'
+      image: '/u1263267256_Create_a_picture_for_DNA_analysis_for_personalize_c1b00433-4809-4d4c-abc9-76dd817287ea_2 (1).png'
     }
   ];
 
@@ -77,12 +71,6 @@ export default function HealthCheck() {
                   <img
                     src={service.image}
                     alt={t(service.titleKey)}
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      if (target.src !== service.fallback) {
-                        target.src = service.fallback;
-                      }
-                    }}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

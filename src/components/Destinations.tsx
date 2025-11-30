@@ -38,7 +38,6 @@ export default function Destinations() {
       regionKey: 'destinations.kyoto.region',
       specialtyKey: 'destinations.kyoto.specialty',
       image: '/u1263267256_Please_create_a_picture_for_Kyoto_in_autumn_--ar__4f75fdca-2165-43cd-bc5b-70b0946170f2_0.png',
-      fallback: 'https://images.pexels.com/photos/402028/pexels-photo-402028.jpeg?auto=compress&cs=tinysrgb&w=1920',
       highlightKeys: ['destinations.kyoto.h1', 'destinations.kyoto.h2', 'destinations.kyoto.h3', 'destinations.kyoto.h4']
     },
     {
@@ -46,7 +45,6 @@ export default function Destinations() {
       regionKey: 'destinations.hakone.region',
       specialtyKey: 'destinations.hakone.specialty',
       image: '/u1263267256_Please_create_a_picture_for_a_Hakone_onsen_with_a_d770d264-9bba-4f13-8af5-574ab956a055_1.png',
-      fallback: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=1920',
       highlightKeys: ['destinations.hakone.h1', 'destinations.hakone.h2', 'destinations.hakone.h3', 'destinations.hakone.h4']
     },
     {
@@ -54,7 +52,6 @@ export default function Destinations() {
       regionKey: 'destinations.okinawa.region',
       specialtyKey: 'destinations.okinawa.specialty',
       image: '/u1263267256_Please_create_a_picture_for_a_beautiful_Okinawa_b_2e6e0c83-1f82-4b7b-876f-0d1bf4769289_1.png',
-      fallback: 'https://images.pexels.com/photos/1371360/pexels-photo-1371360.jpeg?auto=compress&cs=tinysrgb&w=1920',
       highlightKeys: ['destinations.okinawa.h1', 'destinations.okinawa.h2', 'destinations.okinawa.h3', 'destinations.okinawa.h4']
     },
     {
@@ -62,7 +59,6 @@ export default function Destinations() {
       regionKey: 'destinations.yakushima.region',
       specialtyKey: 'destinations.yakushima.specialty',
       image: '/u1263267256_Create_a_picture_for_a_beautiful_Yakushima_big_tr_5484f132-0377-4073-b816-80bae98aa47b_2.png',
-      fallback: 'https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&w=1920',
       highlightKeys: ['destinations.yakushima.h1', 'destinations.yakushima.h2', 'destinations.yakushima.h3', 'destinations.yakushima.h4']
     }
   ];
@@ -99,12 +95,6 @@ export default function Destinations() {
               <img
                 src={destination.image}
                 alt={t(destination.nameKey)}
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  if (target.src !== destination.fallback) {
-                    target.src = destination.fallback;
-                  }
-                }}
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-125 group-hover:rotate-1 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent group-hover:from-black/80 transition-all duration-500" />

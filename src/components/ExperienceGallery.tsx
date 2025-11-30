@@ -38,7 +38,6 @@ export default function ExperienceGallery() {
       locationKey: 'experiences.exp4.location',
       durationKey: 'experiences.exp4.duration',
       image: '/Tsubamesanjo_bit_1.png',
-      fallback: 'https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=1920',
       descKey: 'experiences.exp4.desc',
       tagKeys: ['experiences.exp4.tag1', 'experiences.exp4.tag2', 'experiences.exp4.tag3']
     },
@@ -47,7 +46,6 @@ export default function ExperienceGallery() {
       locationKey: 'experiences.exp5.location',
       durationKey: 'experiences.exp5.duration',
       image: '/u1263267256_Create_Zen_temple_and_Zen_monk_cultural_picture_-_0f3c4dee-7e40-4f7d-9e9b-46d56b144f87_3.png',
-      fallback: 'https://images.pexels.com/photos/2085998/pexels-photo-2085998.jpeg?auto=compress&cs=tinysrgb&w=1920',
       descKey: 'experiences.exp5.desc',
       tagKeys: ['experiences.exp5.tag1', 'experiences.exp5.tag2', 'experiences.exp5.tag3']
     },
@@ -56,7 +54,6 @@ export default function ExperienceGallery() {
       locationKey: 'experiences.exp3.location',
       durationKey: 'experiences.exp3.duration',
       image: '/u1263267256_Please_create_a_picture_for_a_beautiful_onsen_sce_dbcf9f0e-2fee-4395-9062-2fa54c34a125_2.png',
-      fallback: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=1920',
       descKey: 'experiences.exp3.desc',
       tagKeys: ['experiences.exp3.tag1', 'experiences.exp3.tag2', 'experiences.exp3.tag3']
     },
@@ -65,7 +62,6 @@ export default function ExperienceGallery() {
       locationKey: 'experiences.exp1.location',
       durationKey: 'experiences.exp1.duration',
       image: '/u1263267256_Create_a_picture_for_a_beautiful_Yakushima_big_tr_5484f132-0377-4073-b816-80bae98aa47b_3.png',
-      fallback: 'https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&w=1920',
       descKey: 'experiences.exp1.desc',
       tagKeys: ['experiences.exp1.tag1', 'experiences.exp1.tag2', 'experiences.exp1.tag3']
     },
@@ -74,7 +70,6 @@ export default function ExperienceGallery() {
       locationKey: 'experiences.exp2.location',
       durationKey: 'experiences.exp2.duration',
       image: '/u1263267256_Create_a_picture_for_mountain_Kouya_temple_with_m_9b202f79-88f4-4da2-8288-936de4b4dba0_3.png',
-      fallback: 'https://images.pexels.com/photos/618833/pexels-photo-618833.jpeg?auto=compress&cs=tinysrgb&w=1920',
       descKey: 'experiences.exp2.desc',
       tagKeys: ['experiences.exp2.tag1', 'experiences.exp2.tag2', 'experiences.exp2.tag3']
     },
@@ -83,7 +78,6 @@ export default function ExperienceGallery() {
       locationKey: 'experiences.exp6.location',
       durationKey: 'experiences.exp6.duration',
       image: '/u1263267256_Create_a_picture_for_Yoga_in_a_classic_way_--ar_1_f1f2daf6-0bcd-4133-ab53-c235b6b3e5b5_3.png',
-      fallback: 'https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=1920',
       descKey: 'experiences.exp6.desc',
       tagKeys: ['experiences.exp6.tag1', 'experiences.exp6.tag2', 'experiences.exp6.tag3']
     }
@@ -122,12 +116,6 @@ export default function ExperienceGallery() {
                 <img
                   src={experience.image}
                   alt={t(experience.titleKey)}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    if (target.src !== experience.fallback) {
-                      target.src = experience.fallback;
-                    }
-                  }}
                   className="w-full h-full object-cover group-hover:scale-125 group-hover:rotate-1 transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/70 transition-all duration-500" />
