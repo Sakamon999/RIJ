@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function ShokuyojoPage({ onBack }: { onBack: () => void }) {
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center">

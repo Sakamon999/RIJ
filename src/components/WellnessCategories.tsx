@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface WellnessCategoriesProps {
   onTojiClick: () => void;
   onZenClick: () => void;
