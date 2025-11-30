@@ -193,3 +193,59 @@ export async function createItinerary(data: {
   if (error) throw error;
   return result;
 }
+
+export async function getItinerary(itineraryId: string) {
+  const { data, error } = await supabase
+    .from('rij_itineraries')
+    .select('*')
+    .eq('id', itineraryId)
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function reviseItinerary(data: {
+  itineraryId: string;
+  userId: string;
+  revisionRequest: string;
+  pinnedBlockIds: string[];
+  inputMode: 'text' | 'voice';
+}) {
+  const { data: result, error } = await supabase
+    .from('rij_itinerary_revisions')
+    .insert({
+      itinerary_id: data.itineraryId,
+      user_id: data.userId,
+      revision_request: data.revisionRequest,
+      pinned_block_ids: data.pinnedBlockIds,
+      input_mode: data.inputMode,
+      status: 'pending',
+    })
+    .select()
+    .single();
+
+  if (error) throw error;
+  return result;
+}
+
+export async function startTrip(data: {
+  userId: string;
+  itineraryId: string;
+  metadata?: Record<string, unknown>;
+}) {
+  const { data: result, error } = await supabase
+    .from('rij_trip_sessions')
+    .insert({
+      user_id: data.userId,
+      itinerary_id: data.itineraryId,
+      status: 'active',
+      current_day: 1,
+      metadata: data.metadata || {},
+    })
+    .select()
+    .single();
+
+  if (error) throw error;
+  return result;
+}
