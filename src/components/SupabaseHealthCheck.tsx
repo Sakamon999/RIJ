@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { CheckCircle, XCircle, Loader, Database, Shield } from 'lucide-react';
+import { CheckCircle, XCircle, Loader, Database, Shield, AlertTriangle } from 'lucide-react';
 import { checkSupabaseHealth, type HealthCheckResult } from '../lib/supabase';
+import { isSupabaseConfigured } from '../lib/supabase/client';
 
 export default function SupabaseHealthCheck() {
   const [health, setHealth] = useState<HealthCheckResult | null>(null);
@@ -10,6 +11,13 @@ export default function SupabaseHealthCheck() {
     let mounted = true;
 
     const runHealthCheck = async () => {
+      if (!isSupabaseConfigured()) {
+        if (mounted) {
+          setLoading(false);
+        }
+        return;
+      }
+
       try {
         const result = await checkSupabaseHealth();
         if (mounted) {
@@ -36,6 +44,15 @@ export default function SupabaseHealthCheck() {
       <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg border border-white/10">
         <Loader className="w-4 h-4 text-emerald-400 animate-spin" />
         <span className="text-sm text-gray-400">Checking Supabase connection...</span>
+      </div>
+    );
+  }
+
+  if (!isSupabaseConfigured()) {
+    return (
+      <div className="flex items-center gap-2 px-4 py-2 bg-yellow-900/20 rounded-lg border border-yellow-500/30">
+        <AlertTriangle className="w-4 h-4 text-yellow-400" />
+        <span className="text-sm text-yellow-400">Supabase not configured (check .env file)</span>
       </div>
     );
   }

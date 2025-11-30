@@ -1,4 +1,4 @@
-export { supabase } from './client';
+export { supabase, isSupabaseConfigured } from './client';
 export type { SupabaseClient } from './client';
 
 export {

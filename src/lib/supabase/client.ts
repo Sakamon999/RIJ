@@ -3,7 +3,10 @@ import { validateSupabaseEnv } from '../env';
 
 const { url, anonKey } = validateSupabaseEnv();
 
-export const supabase = createClient(url, anonKey, {
+const supabaseUrl = url || 'https://placeholder.supabase.co';
+const supabaseKey = anonKey || 'placeholder-key';
+
+export const supabase = createClient(supabaseUrl, supabaseKey, {
   auth: {
     autoRefreshToken: true,
     persistSession: true,
@@ -13,3 +16,7 @@ export const supabase = createClient(url, anonKey, {
 });
 
 export type SupabaseClient = typeof supabase;
+
+export const isSupabaseConfigured = () => {
+  return url && anonKey && url.startsWith('http');
+};
