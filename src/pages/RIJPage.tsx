@@ -2,22 +2,59 @@ import { ArrowLeft, Sparkles, Mic, Shield, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import RIJLegalBanner from '../components/RIJLegalBanner';
+import ConsentForm from '../components/ConsentForm';
+import { createConsents, createProfilingSession, getOrCreateAnonymousUser } from '../lib/supabase/rij';
 
 interface RIJPageProps {
   onBack: () => void;
-  onStartProfiling: () => void;
+  onNavigateToProfile: (sessionId: string) => void;
+  onNavigateToConsent?: () => void;
   isConsentPage?: boolean;
 }
 
-export default function RIJPage({ onBack, onStartProfiling, isConsentPage }: RIJPageProps) {
+export default function RIJPage({ onBack, onNavigateToProfile, onNavigateToConsent, isConsentPage }: RIJPageProps) {
   const { language } = useLanguage();
-  const [consentsGiven, setConsentsGiven] = useState({
-    privacyPolicy: false,
-    termsOfService: false,
-    nonMedical: false,
-  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const allConsentsGiven = Object.values(consentsGiven).every(Boolean);
+  const handleConsentSubmit = async (consents: {
+    audio: boolean;
+    bio: boolean;
+    location: boolean;
+  }) => {
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      const userId = await getOrCreateAnonymousUser();
+
+      await createConsents({
+        userId,
+        audioConsent: consents.audio,
+        bioConsent: consents.bio,
+        locationConsent: consents.location,
+        userAgent: navigator.userAgent,
+      });
+
+      const session = await createProfilingSession({
+        userId,
+        locale: language,
+        metadata: {
+          consentsGiven: consents,
+        },
+      });
+
+      onNavigateToProfile(session.id);
+    } catch (err) {
+      console.error('Error creating session:', err);
+      setError(
+        language === 'en'
+          ? 'Failed to create session. Please try again.'
+          : 'セッションの作成に失敗しました。もう一度お試しください。'
+      );
+      setIsSubmitting(false);
+    }
+  };
 
   if (isConsentPage) {
     return (
@@ -43,162 +80,20 @@ export default function RIJPage({ onBack, onStartProfiling, isConsentPage }: RIJ
               </h1>
               <p className="text-gray-400 text-lg">
                 {language === 'en'
-                  ? 'Please review and accept to continue'
-                  : '続行するには確認して同意してください'}
+                  ? 'Please review and grant permissions to continue'
+                  : '続行するには権限を確認して付与してください'}
               </p>
             </div>
 
             <RIJLegalBanner />
 
-            <div className="space-y-4">
-              <div
-                className={`p-6 bg-white/5 rounded-xl border transition-all cursor-pointer hover:bg-white/10 ${
-                  consentsGiven.privacyPolicy
-                    ? 'border-emerald-500/50'
-                    : 'border-white/10'
-                }`}
-                onClick={() =>
-                  setConsentsGiven((prev) => ({
-                    ...prev,
-                    privacyPolicy: !prev.privacyPolicy,
-                  }))
-                }
-              >
-                <div className="flex items-start gap-4">
-                  <div
-                    className={`flex-shrink-0 w-6 h-6 rounded border-2 flex items-center justify-center transition-all ${
-                      consentsGiven.privacyPolicy
-                        ? 'bg-emerald-500 border-emerald-500'
-                        : 'border-gray-600'
-                    }`}
-                  >
-                    {consentsGiven.privacyPolicy && (
-                      <CheckCircle2 className="w-4 h-4 text-white" />
-                    )}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-light mb-2">
-                      {language === 'en'
-                        ? 'Privacy Policy'
-                        : 'プライバシーポリシー'}
-                    </h3>
-                    <p className="text-sm text-gray-400 leading-relaxed">
-                      {language === 'en'
-                        ? 'I agree to the collection and use of my wellness profiling data as described in the Privacy Policy. My data will be stored securely and used only to create personalized wellness itineraries.'
-                        : 'プライバシーポリシーに記載されているウェルネスプロファイリングデータの収集と使用に同意します。私のデータは安全に保存され、パーソナライズされたウェルネス旅程の作成にのみ使用されます。'}
-                    </p>
-                  </div>
-                </div>
+            {error && (
+              <div className="p-4 bg-red-900/20 border border-red-500/30 rounded-lg text-red-100 text-sm">
+                {error}
               </div>
+            )}
 
-              <div
-                className={`p-6 bg-white/5 rounded-xl border transition-all cursor-pointer hover:bg-white/10 ${
-                  consentsGiven.termsOfService
-                    ? 'border-emerald-500/50'
-                    : 'border-white/10'
-                }`}
-                onClick={() =>
-                  setConsentsGiven((prev) => ({
-                    ...prev,
-                    termsOfService: !prev.termsOfService,
-                  }))
-                }
-              >
-                <div className="flex items-start gap-4">
-                  <div
-                    className={`flex-shrink-0 w-6 h-6 rounded border-2 flex items-center justify-center transition-all ${
-                      consentsGiven.termsOfService
-                        ? 'bg-emerald-500 border-emerald-500'
-                        : 'border-gray-600'
-                    }`}
-                  >
-                    {consentsGiven.termsOfService && (
-                      <CheckCircle2 className="w-4 h-4 text-white" />
-                    )}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-light mb-2">
-                      {language === 'en'
-                        ? 'Terms of Service'
-                        : '利用規約'}
-                    </h3>
-                    <p className="text-sm text-gray-400 leading-relaxed">
-                      {language === 'en'
-                        ? 'I have read and agree to the Terms of Service. I understand that RIJ provides travel planning services and is not a substitute for professional medical care.'
-                        : '利用規約を読み、同意しました。RIJが旅行計画サービスを提供するものであり、専門的な医療の代替ではないことを理解しています。'}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                className={`p-6 bg-white/5 rounded-xl border transition-all cursor-pointer hover:bg-white/10 ${
-                  consentsGiven.nonMedical
-                    ? 'border-emerald-500/50'
-                    : 'border-white/10'
-                }`}
-                onClick={() =>
-                  setConsentsGiven((prev) => ({
-                    ...prev,
-                    nonMedical: !prev.nonMedical,
-                  }))
-                }
-              >
-                <div className="flex items-start gap-4">
-                  <div
-                    className={`flex-shrink-0 w-6 h-6 rounded border-2 flex items-center justify-center transition-all ${
-                      consentsGiven.nonMedical
-                        ? 'bg-emerald-500 border-emerald-500'
-                        : 'border-gray-600'
-                    }`}
-                  >
-                    {consentsGiven.nonMedical && (
-                      <CheckCircle2 className="w-4 h-4 text-white" />
-                    )}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-light mb-2">
-                      {language === 'en'
-                        ? 'Non-Medical Acknowledgment'
-                        : '非医療確認'}
-                    </h3>
-                    <p className="text-sm text-gray-400 leading-relaxed">
-                      {language === 'en'
-                        ? 'I understand that RIJ does not provide medical advice, diagnosis, or treatment. I will consult with qualified healthcare professionals for any health concerns. RIJ focuses solely on comfort-oriented travel planning.'
-                        : 'RIJが医学的アドバイス、診断、治療を提供しないことを理解しています。健康上の懸念については資格のある医療専門家に相談します。RIJは快適さ重視の旅行計画にのみ焦点を当てています。'}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <button
-                onClick={onBack}
-                className="flex-1 px-8 py-4 bg-white/5 hover:bg-white/10 rounded-full text-white font-light tracking-wide transition-all border border-white/10"
-              >
-                {language === 'en' ? 'Cancel' : 'キャンセル'}
-              </button>
-              <button
-                onClick={() => {
-                  if (allConsentsGiven) {
-                    alert(
-                      language === 'en'
-                        ? 'Voice profiling will be implemented in the next phase'
-                        : '音声プロファイリングは次のフェーズで実装されます'
-                    );
-                  }
-                }}
-                disabled={!allConsentsGiven}
-                className={`flex-1 px-8 py-4 rounded-full font-light tracking-wide transition-all ${
-                  allConsentsGiven
-                    ? 'bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white shadow-lg hover:shadow-emerald-500/50'
-                    : 'bg-gray-800 text-gray-500 cursor-not-allowed'
-                }`}
-              >
-                {language === 'en' ? 'Accept & Continue' : '同意して続行'}
-              </button>
-            </div>
+            <ConsentForm onSubmit={handleConsentSubmit} isSubmitting={isSubmitting} />
           </div>
         </div>
       </div>
@@ -376,7 +271,7 @@ export default function RIJPage({ onBack, onStartProfiling, isConsentPage }: RIJ
 
             <div className="text-center space-y-6">
               <button
-                onClick={onStartProfiling}
+                onClick={onNavigateToConsent}
                 className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 rounded-full text-white text-lg font-light tracking-wide shadow-xl hover:shadow-emerald-500/50 transition-all"
               >
                 <Mic className="w-5 h-5" />
