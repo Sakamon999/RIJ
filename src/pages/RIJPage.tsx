@@ -1,5 +1,6 @@
 import { ArrowLeft, Sparkles, Target, Users, TrendingUp } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import SupabaseHealthCheck from '../components/SupabaseHealthCheck';
 
 interface RIJPageProps {
   onBack: () => void;
@@ -81,7 +82,14 @@ export default function RIJPage({ onBack }: RIJPageProps) {
             </div>
           </div>
 
-          <div className="mt-12 pt-12 border-t border-white/10">
+          <div className="mt-12 pt-12 border-t border-white/10 space-y-8">
+            <div>
+              <h3 className="text-lg font-light text-gray-300 mb-4">
+                {language === 'en' ? 'System Status' : 'システムステータス'}
+              </h3>
+              <SupabaseHealthCheck />
+            </div>
+
             <p className="text-sm text-gray-500">
               {language === 'en'
                 ? 'RIJ MVP features will be activated in upcoming releases'
