@@ -2,8 +2,6 @@
 
 ## ✅ Phase 1: Scaffolding (COMPLETED)
 
-## ✅ Phase 1.5: Supabase Integration (COMPLETED)
-
 ### Audit Summary
 
 **Framework & Architecture:**
@@ -30,17 +28,8 @@ State-based pages:
 ```
 src/
 ├── App.tsx                    # Main router (state-based)
-├── lib/
-│   ├── env.ts                 # NEW: Environment validation
-│   └── supabase/
-│       ├── index.ts           # NEW: Main exports
-│       ├── client.ts          # NEW: Browser Supabase client
-│       ├── auth.ts            # NEW: Authentication utilities
-│       ├── storage.ts         # NEW: File storage utilities
-│       └── health.ts          # NEW: Health check utilities
 ├── components/
-│   ├── Navigation.tsx         # Header with nav + RIJ button
-│   ├── SupabaseHealthCheck.tsx # NEW: Health status component
+│   ├── Navigation.tsx         # Header with nav + NEW RIJ button
 │   ├── Hero.tsx
 │   ├── Philosophy.tsx
 │   ├── WellnessCategories.tsx
@@ -55,19 +44,18 @@ src/
 │   ├── ShinrinyokuPage.tsx
 │   ├── ShokuyojoPage.tsx
 │   ├── MatsuriPage.tsx
-│   └── RIJPage.tsx            # RIJ MVP with health check
+│   └── RIJPage.tsx            # NEW: RIJ MVP placeholder
 └── contexts/
     └── LanguageContext.tsx
 ```
 
-### Changes Made (Phase 1 - Non-Breaking)
+### Changes Made (Non-Breaking)
 
 1. **Created `/src/pages/RIJPage.tsx`**
    - Placeholder page with "Coming Online" message
    - Uses existing layout patterns (back button, dark theme)
    - Supports EN/JA via LanguageContext
    - Shows 3 feature preview cards
-   - **NEW:** Displays Supabase health check status
 
 2. **Updated `/src/App.tsx`**
    - Added `'rij'` to page state type union
@@ -80,28 +68,6 @@ src/
    - Added prominent "RIJ MVP" button (gradient style, sparkles icon)
    - Button appears in both desktop nav and mobile menu
    - Mobile menu auto-closes on RIJ click
-
-### Changes Made (Phase 1.5 - Supabase Integration)
-
-1. **Created Supabase Client Infrastructure:**
-   - `/src/lib/env.ts` - Environment variable validation
-   - `/src/lib/supabase/client.ts` - Browser Supabase client
-   - `/src/lib/supabase/auth.ts` - Full auth utilities (sign in/up/out, OTP, password reset)
-   - `/src/lib/supabase/storage.ts` - File upload/download/delete helpers
-   - `/src/lib/supabase/health.ts` - Connection health checks
-   - `/src/lib/supabase/index.ts` - Clean exports for all utilities
-
-2. **Created SupabaseHealthCheck Component:**
-   - `/src/components/SupabaseHealthCheck.tsx`
-   - Real-time auth connection status
-   - Database connectivity verification
-   - Session detection and user ID display
-   - Auto-runs health check on mount
-   - Integrated into RIJ page
-
-3. **Documentation:**
-   - Created `SUPABASE_INTEGRATION.md` with complete usage guide
-   - Updated `RIJ_INTEGRATION_PLAN.md` with Phase 1.5 completion
 
 ### Environment Variables
 

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Sparkles } from 'lucide-react';
 import Hero from './components/Hero';
 import Navigation from './components/Navigation';
 import WellnessCategories from './components/WellnessCategories';
@@ -18,8 +17,7 @@ import RIJPage from './pages/RIJPage';
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [currentPage, setCurrentPage] = useState<'home' | 'toji' | 'zen' | 'shinrinyoku' | 'shokuyojo' | 'matsuri' | 'rij' | 'rij-consent' | 'rij-profile'>('home');
-  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState<'home' | 'toji' | 'zen' | 'shinrinyoku' | 'shokuyojo' | 'matsuri' | 'rij'>('home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,51 +48,7 @@ function App() {
   }
 
   if (currentPage === 'rij') {
-    return (
-      <RIJPage
-        onBack={() => setCurrentPage('home')}
-        onNavigateToProfile={(id) => {
-          setSessionId(id);
-          setCurrentPage('rij-profile');
-        }}
-        onNavigateToConsent={() => setCurrentPage('rij-consent')}
-      />
-    );
-  }
-
-  if (currentPage === 'rij-consent') {
-    return (
-      <RIJPage
-        onBack={() => setCurrentPage('rij')}
-        onNavigateToProfile={(id) => {
-          setSessionId(id);
-          setCurrentPage('rij-profile');
-        }}
-        onNavigateToConsent={() => setCurrentPage('rij-consent')}
-        isConsentPage
-      />
-    );
-  }
-
-  if (currentPage === 'rij-profile' && sessionId) {
-    return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
-        <div className="text-center space-y-6">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-emerald-400 to-teal-600">
-            <Sparkles className="w-10 h-10 text-white" />
-          </div>
-          <h1 className="text-4xl font-light">Profiling Session Ready</h1>
-          <p className="text-gray-400">Session ID: {sessionId}</p>
-          <p className="text-sm text-gray-500">Voice profiling UI will be implemented in the next phase</p>
-          <button
-            onClick={() => setCurrentPage('home')}
-            className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 rounded-full text-white font-light tracking-wide transition-all"
-          >
-            Back to Home
-          </button>
-        </div>
-      </div>
-    );
+    return <RIJPage onBack={() => setCurrentPage('home')} />;
   }
 
   return (
