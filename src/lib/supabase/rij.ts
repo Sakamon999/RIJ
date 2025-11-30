@@ -103,3 +103,93 @@ export async function getUserSession(sessionId: string) {
   if (error) throw error;
   return data;
 }
+
+export async function getSessionTurns(sessionId: string) {
+  const { data, error } = await supabase
+    .from('rij_profiling_turns')
+    .select('*')
+    .eq('session_id', sessionId)
+    .order('turn_number', { ascending: true });
+
+  if (error) throw error;
+  return data;
+}
+
+export async function createProfilingTurn(turn: {
+  sessionId: string;
+  userId: string;
+  turnNumber: number;
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+  inputMode: 'text' | 'voice' | 'system';
+  audioUrl?: string;
+  metadata?: Record<string, unknown>;
+}) {
+  const { data, error } = await supabase
+    .from('rij_profiling_turns')
+    .insert({
+      session_id: turn.sessionId,
+      user_id: turn.userId,
+      turn_number: turn.turnNumber,
+      role: turn.role,
+      content: turn.content,
+      input_mode: turn.inputMode,
+      audio_url: turn.audioUrl,
+      metadata: turn.metadata,
+    })
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function updateSessionMetadata(sessionId: string, metadata: Record<string, unknown>) {
+  const { data, error } = await supabase
+    .from('rij_profiling_sessions')
+    .update({ metadata })
+    .eq('id', sessionId)
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function completeProfilingSession(sessionId: string) {
+  const { data, error } = await supabase
+    .from('rij_profiling_sessions')
+    .update({ status: 'completed' })
+    .eq('id', sessionId)
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function createItinerary(data: {
+  userId: string;
+  profileId: string;
+  title: string;
+  description: string;
+  totalDays: number;
+  metadata: Record<string, unknown>;
+}) {
+  const { data: result, error } = await supabase
+    .from('rij_itineraries')
+    .insert({
+      user_id: data.userId,
+      profile_id: data.profileId,
+      title: data.title,
+      description: data.description,
+      status: 'proposed',
+      total_days: data.totalDays,
+      metadata: data.metadata,
+    })
+    .select()
+    .single();
+
+  if (error) throw error;
+  return result;
+}
