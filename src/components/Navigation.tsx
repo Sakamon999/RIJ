@@ -1,14 +1,13 @@
-import { Menu, X, Leaf, Languages, Sparkles } from 'lucide-react';
+import { Menu, X, Leaf, Languages } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 interface NavigationProps {
   isMenuOpen: boolean;
   setIsMenuOpen: (value: boolean) => void;
   scrolled: boolean;
-  onRIJClick?: () => void;
 }
 
-export default function Navigation({ isMenuOpen, setIsMenuOpen, scrolled, onRIJClick }: NavigationProps) {
+export default function Navigation({ isMenuOpen, setIsMenuOpen, scrolled }: NavigationProps) {
   const { language, setLanguage, t } = useLanguage();
 
   const navLinks = [
@@ -55,15 +54,6 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen, scrolled, onRIJC
               </a>
             ))}
             <div className="flex items-center gap-2">
-              {onRIJClick && (
-                <button
-                  onClick={onRIJClick}
-                  className="flex items-center gap-1 px-4 py-2 rounded-full text-sm font-light tracking-wide transition-all bg-gradient-to-r from-emerald-500 to-teal-600 text-white hover:from-emerald-600 hover:to-teal-700 shadow-lg hover:shadow-emerald-500/50"
-                >
-                  <Sparkles className="w-4 h-4" />
-                  <span>RIJ MVP</span>
-                </button>
-              )}
               <button
                 onClick={() => setLanguage(language === 'en' ? 'ja' : 'en')}
                 className={`flex items-center gap-1 px-3 py-2 rounded-full text-sm font-light tracking-wide transition-all ${
@@ -100,18 +90,6 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen, scrolled, onRIJC
                 {link.name}
               </a>
             ))}
-            {onRIJClick && (
-              <button
-                onClick={() => {
-                  onRIJClick();
-                  setIsMenuOpen(false);
-                }}
-                className="w-full flex items-center justify-center gap-2 px-6 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-full text-sm font-light tracking-wide hover:from-emerald-600 hover:to-teal-700 transition-all"
-              >
-                <Sparkles className="w-4 h-4" />
-                <span>RIJ MVP</span>
-              </button>
-            )}
             <button
               onClick={() => setLanguage(language === 'en' ? 'ja' : 'en')}
               className="w-full flex items-center justify-center gap-2 px-6 py-2 bg-emerald-600 text-white rounded-full text-sm font-light tracking-wide hover:bg-emerald-700 transition-colors"

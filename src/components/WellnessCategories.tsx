@@ -32,6 +32,7 @@ export default function WellnessCategories({ onTojiClick, onZenClick, onShinriny
       subtitleKey: 'pillars.toji.subtitle',
       descKey: 'pillars.toji.desc',
       image: '/u1263267256_Please_create_a_picture_for_a_beautiful_onsen_sce_dbcf9f0e-2fee-4395-9062-2fa54c34a125_2.png',
+      fallback: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=1920',
       color: 'blue'
     },
     {
@@ -41,6 +42,7 @@ export default function WellnessCategories({ onTojiClick, onZenClick, onShinriny
       subtitleKey: 'pillars.zen.subtitle',
       descKey: 'pillars.zen.desc',
       image: '/Gemini_Generated_Image.jpg',
+      fallback: 'https://images.pexels.com/photos/3408354/pexels-photo-3408354.jpeg?auto=compress&cs=tinysrgb&w=1920',
       color: 'rose'
     },
     {
@@ -50,6 +52,7 @@ export default function WellnessCategories({ onTojiClick, onZenClick, onShinriny
       subtitleKey: 'pillars.shinrin.subtitle',
       descKey: 'pillars.shinrin.desc',
       image: '/Gemini_Shinrinyoku.jpg',
+      fallback: 'https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&w=1920',
       color: 'emerald'
     },
     {
@@ -59,6 +62,7 @@ export default function WellnessCategories({ onTojiClick, onZenClick, onShinriny
       subtitleKey: 'pillars.shokuyojo.subtitle',
       descKey: 'pillars.shokuyojo.desc',
       image: '/u1263267256_Create_a_picture_for_a_Kyoto_Kaiseki_dishes_--ar__c7ca1901-f733-472b-a368-4cf939758789_2.png',
+      fallback: 'https://images.pexels.com/photos/1907228/pexels-photo-1907228.jpeg?auto=compress&cs=tinysrgb&w=1920',
       color: 'amber'
     },
     {
@@ -68,6 +72,7 @@ export default function WellnessCategories({ onTojiClick, onZenClick, onShinriny
       subtitleKey: 'pillars.matsuri.subtitle',
       descKey: 'pillars.matsuri.desc',
       image: '/Festival_Japan.png',
+      fallback: 'https://images.pexels.com/photos/161401/fushimi-inari-taisha-shrine-kyoto-japan-temple-161401.jpeg?auto=compress&cs=tinysrgb&w=1920',
       color: 'orange'
     }
   ];
@@ -124,6 +129,12 @@ export default function WellnessCategories({ onTojiClick, onZenClick, onShinriny
                     <img
                       src={category.image}
                       alt={t(category.titleKey)}
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        if (target.src !== category.fallback) {
+                          target.src = category.fallback;
+                        }
+                      }}
                       className="w-full h-full object-cover group-hover:scale-125 group-hover:rotate-2 transition-all duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/70 transition-all duration-500" />
@@ -176,6 +187,12 @@ export default function WellnessCategories({ onTojiClick, onZenClick, onShinriny
                     <img
                       src={category.image}
                       alt={t(category.titleKey)}
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        if (target.src !== category.fallback) {
+                          target.src = category.fallback;
+                        }
+                      }}
                       className="w-full h-full object-cover group-hover:scale-125 group-hover:rotate-2 transition-all duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/70 transition-all duration-500" />

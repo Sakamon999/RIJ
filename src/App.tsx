@@ -12,12 +12,11 @@ import ZenPage from './pages/ZenPage';
 import ShinrinyokuPage from './pages/ShinrinyokuPage';
 import ShokuyojoPage from './pages/ShokuyojoPage';
 import MatsuriPage from './pages/MatsuriPage';
-import RIJPage from './pages/RIJPage';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [currentPage, setCurrentPage] = useState<'home' | 'toji' | 'zen' | 'shinrinyoku' | 'shokuyojo' | 'matsuri' | 'rij'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'toji' | 'zen' | 'shinrinyoku' | 'shokuyojo' | 'matsuri'>('home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,18 +46,9 @@ function App() {
     return <MatsuriPage onBack={() => setCurrentPage('home')} />;
   }
 
-  if (currentPage === 'rij') {
-    return <RIJPage onBack={() => setCurrentPage('home')} />;
-  }
-
   return (
     <div className="min-h-screen bg-black">
-      <Navigation
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-        scrolled={scrolled}
-        onRIJClick={() => setCurrentPage('rij')}
-      />
+      <Navigation isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} scrolled={scrolled} />
       <Hero />
       <Philosophy />
       <WellnessCategories
